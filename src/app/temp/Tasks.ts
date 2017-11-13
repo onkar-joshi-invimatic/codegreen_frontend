@@ -76,4 +76,12 @@ class Tasks
         
         return tasklist;
     }
+    
+    removeTaskById(id : number)
+    {
+        for (let task of this.tasks)
+        {
+            if (task.id == id) this.tasks.push(task);
+        }
+    }
 }
