@@ -4,9 +4,9 @@ export class Task
     private _id : number;
     private _description : string;
     private _priority : string;
-    private _date : string;
+    private _date : Date;
     
-    constructor(id : number, description : string = "A new task." , priority : string = "green", date : string = new Date().toISOString())
+    constructor(id : number = -1, description : string = "A new task." , priority : string = "green", date : Date = new Date())
     {
         this.id = id;
         this.description = description;
@@ -29,7 +29,7 @@ export class Task
     */
     set id(id : number)
     {
-        if (id == undefined || id == null)
+        if (typeof id === 'undefined')
         {
             throw new Error("Task id is invalid");
         }
@@ -73,18 +73,18 @@ export class Task
     
     /**
     * Get the creation date of the Task.
-    * @return {string} the ISO 8601 datestring.
+    * @return {Date} the date.
     */
-    get date() : string
+    get date() : Date
     {
         return this.date;
     }
     
     /**
     * Set the creation date of the Task.
-    * @param {string} date - The new creation date in the form of an ISO 8601 datestring.
+    * @param {Date} date - The new creation date.
     */
-    set date(date : string)
+    set date(date : Date)
     {
         this.date = date;
     }
