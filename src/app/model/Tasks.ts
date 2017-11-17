@@ -1,19 +1,20 @@
-import { Task } from "./Task";
+import { Task } from './Task';
 
-class Tasks
+export class Tasks
 {
-    private _tasks : Task[];
+    private _tasks : Array<Task>;
+    private idCounter : number;
     
     constructor()
     {
-        // Do nothing
+        this.tasks = new Array<Task>();
     }
     
     /**
     * Get takslist.
     * @return {Task[}} The list of tasks.
     */
-    get tasks() : Task[]
+    get tasks() : Array<Task>
     {
         return this._tasks;
     }
@@ -22,8 +23,8 @@ class Tasks
     * Set tasklist.
     * @param {Task[]} tasks - The new list of tasks.
     */
-    set tasks(tasks : Task[])
-    {
+    set tasks(tasks : Array<Task>)
+    { 
         this._tasks = tasks;
     }
     
@@ -46,6 +47,8 @@ class Tasks
     {
         let newId = this.size;
         let newTask = new Task(newId, description, priority, date);
+        
+        newTask.id = this.idCounter++;
         
         this.tasks.push(newTask);
     }

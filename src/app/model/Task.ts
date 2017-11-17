@@ -39,7 +39,7 @@ export class Task
     * Get the description of the Task.
     * @return {string} The Tasks description.
     */
-    get description() : string
+    get description() : string 
     {
         return this.description;
     }
