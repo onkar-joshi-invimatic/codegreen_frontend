@@ -61,7 +61,7 @@ export class Tasks
     */
     getTask(id : number) : Task
     {
-        for (let task of this._tasks)
+        for (let task of this.tasks)
         {
             if (task.id == id) return task;
         }
@@ -71,7 +71,7 @@ export class Tasks
     
     getTasksByPriority(priority : Priority) : Array<Task>
     {
-        let tasklist : Task[];
+        let tasklist = new Array<Task>();
         
         for (let task of this.tasks)
         {

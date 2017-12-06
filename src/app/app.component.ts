@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'codegreen - a taskkiller';
-  description = 'The Angular taskkiller';
 }

@@ -1,19 +1,72 @@
 <div id="tasks-overview">
+    
+    <h2>Your tasks:</h2>
 
-    <div id="tasks-overview-top"></div>
-    
-    <div id="tasks-red">
-        <h3>{{Priority.Red}}</h3>
-    </div>
-    
-    <div id="tasks-yellow">
-        <h3>{{Priority.Yellow}}</h3>
+    <div id="tasks-overview-top">
         
     </div>
     
-    <div id="tasks-green">
-        <h3>{{Priority.Green}}</h3>
+    <div id="tasks-red" class="task-table">
+        <h3>- {{Priority.Red}}</h3>
         
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Remove task?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks.getTasksByPriority(Priority.Red)">
+                    <td>{{task.description}}</td>
+                    <td>{{task.date.toDateString()}}</td>
+                    <td>remove</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="tasks-yellow" class="task-table">
+        <h3>- {{Priority.Yellow}}</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Remove task?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks.getTasksByPriority(Priority.Yellow)">
+                    <td>{{task.description}}</td>
+                    <td>{{task.date.toDateString()}}</td>
+                    <td>remove</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="tasks-green" class="task-table">
+        <h3>- {{Priority.Green}}</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Remove task?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks.getTasksByPriority(Priority.Green)">
+                    <td>{{task.description}}</td>
+                    <td>{{task.date.toDateString()}}</td>
+                    <td>remove</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     
 </div>
