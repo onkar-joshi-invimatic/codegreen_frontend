@@ -24,15 +24,6 @@ export class TasksComponent implements OnInit
 
   ngOnInit() 
   {
-      this.tasks.addTask("Send mail to Elon.", Priority.Yellow, new Date());
-      this.tasks.addTask("Send mail to Elon.", Priority.Yellow, new Date());
-      this.tasks.addTask("Send mail to Elon.", Priority.Yellow, new Date());
-      this.tasks.addTask("Buy catfood!", Priority.Red, new Date());
-      this.tasks.addTask("Buy catfood!", Priority.Red, new Date());
-      this.tasks.addTask("Buy catfood!", Priority.Red, new Date());
-      this.tasks.addTask("Write loveletter.", Priority.Green, new Date());
-      this.tasks.addTask("Write loveletter.", Priority.Green, new Date());
-      this.tasks.addTask("Write loveletter.", Priority.Green, new Date());
   }
     
   removeTask(task : Task) : void

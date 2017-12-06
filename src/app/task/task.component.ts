@@ -3,6 +3,7 @@ import { Task } from '../model/Task';
 import { Tasks } from '../model/Tasks';
 import { TaskService } from '../task.service';
 import { Priority } from '../model/Priority';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -18,7 +19,7 @@ export class TaskComponent implements OnInit
   // Hack to show enum
   Priority = Priority;
 
-  constructor(private taskService : TaskService) { }
+  constructor(private taskService : TaskService, private router : Router) { }
 
   ngOnInit() {
   }
@@ -49,6 +50,8 @@ export class TaskComponent implements OnInit
       this.taskService.tasks.addTask(this.taskDescription, priority, new Date());
       this.taskDescription = "";
       this.taskPriority = "Green";
+      
+      this.router.navigate(['/tasks']);
   }
 
 }

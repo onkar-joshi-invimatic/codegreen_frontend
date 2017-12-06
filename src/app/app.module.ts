@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskComponent } from './task/task.component';
 
-import { TaskService } from './task.service.ts';
+import { TaskService } from './task.service';
 import { AppRoutingModule } from './/app-routing.module';
 
 
