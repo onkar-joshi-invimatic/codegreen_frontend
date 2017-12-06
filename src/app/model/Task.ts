@@ -43,7 +43,7 @@ export class Task
     */
     get description() : string 
     {
-        return this.description;
+        return this._description;
     }
     
     /**
@@ -79,7 +79,7 @@ export class Task
     */
     get date() : Date
     {
-        return this.date;
+        return this._date;
     }
     
     /**
@@ -88,6 +88,6 @@ export class Task
     */
     set date(date : Date)
     {
-        this.date = date;
+        this._date = date;
     }
 }
