@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Tasks } from '../model/Tasks';
+import { Task } from '../model/Task';
 import { Priority } from '../model/Priority';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -10,12 +12,15 @@ import { Priority } from '../model/Priority';
 })
 export class TasksComponent implements OnInit 
 {
-  tasks = new Tasks();
+  get tasks() : Tasks
+  {
+      return this.taskService.tasks;
+  }
     
   // This is a hack that enables us to use imported enums.
   Priority = Priority;
     
-  constructor() { }
+  constructor(private taskService : TaskService) { }
 
   ngOnInit() 
   {
@@ -28,6 +33,11 @@ export class TasksComponent implements OnInit
       this.tasks.addTask("Write loveletter.", Priority.Green, new Date());
       this.tasks.addTask("Write loveletter.", Priority.Green, new Date());
       this.tasks.addTask("Write loveletter.", Priority.Green, new Date());
+  }
+    
+  removeTask(task : Task) : void
+  {
+      this.tasks.removeTaskById(task.id);
   }
 
 }

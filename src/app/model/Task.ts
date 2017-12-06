@@ -35,6 +35,8 @@ export class Task
         {
             throw new Error("Task id is invalid");
         }
+        
+        this._id = id;
     }
     
     /**

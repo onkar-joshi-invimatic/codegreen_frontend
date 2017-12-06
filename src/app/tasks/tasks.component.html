@@ -21,7 +21,10 @@
                 <tr *ngFor="let task of tasks.getTasksByPriority(Priority.Red)">
                     <td>{{task.description}}</td>
                     <td>{{task.date.toDateString()}}</td>
-                    <td>remove</td>
+                    <td class="remove-task" (click)="removeTask(task)"><i class="fa fa-times" aria-hidden="true"></i></td>
+                </tr>
+                <tr *ngIf="tasks.getTasksByPriority(Priority.Red).length == 0">
+                    <td colspan="3">No red tasks, good job!</td>
                 </tr>
             </tbody>
         </table>
@@ -42,7 +45,10 @@
                 <tr *ngFor="let task of tasks.getTasksByPriority(Priority.Yellow)">
                     <td>{{task.description}}</td>
                     <td>{{task.date.toDateString()}}</td>
-                    <td>remove</td>
+                    <td class="remove-task" (click)="removeTask(task)"><i class="fa fa-times" aria-hidden="true"></i></td>
+                </tr>
+                <tr *ngIf="tasks.getTasksByPriority(Priority.Yellow).length == 0">
+                    <td colspan="3">No yellow tasks, good job!</td>
                 </tr>
             </tbody>
         </table>
@@ -63,7 +69,10 @@
                 <tr *ngFor="let task of tasks.getTasksByPriority(Priority.Green)">
                     <td>{{task.description}}</td>
                     <td>{{task.date.toDateString()}}</td>
-                    <td>remove</td>
+                    <td class="remove-task" (click)="removeTask(task)"><i class="fa fa-times" aria-hidden="true"></i></td>
+                </tr>
+                <tr *ngIf="tasks.getTasksByPriority(Priority.Green).length == 0">
+                    <td colspan="3">No green tasks, good job!</td>
                 </tr>
             </tbody>
         </table>

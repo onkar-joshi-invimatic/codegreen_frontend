@@ -4,7 +4,7 @@ import { Priority } from './Priority';
 export class Tasks
 {
     private _tasks : Array<Task>;
-    private idCounter : number;
+    private idCounter : number = 0;
     
     constructor()
     {
@@ -46,8 +46,7 @@ export class Tasks
     */
     addTask(description : string, priority : Priority, date : Date)
     {
-        let newId = this.size;
-        let newTask = new Task(newId, description, priority, date);
+        let newTask = new Task(0, description, priority, date);
         
         newTask.id = this.idCounter++;
         
@@ -83,9 +82,10 @@ export class Tasks
     
     removeTaskById(id : number)
     {
-        for (let task of this.tasks)
-        {
-            if (task.id == id) this.tasks.push(task);
+        let index = this.tasks.indexOf(this.getTask(id), 0);
+        
+        if (index > -1) {
+            this.tasks.splice(index, 1);
         }
     }
 }
