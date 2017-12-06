@@ -1,4 +1,5 @@
 import { Task } from './Task';
+import { Priority } from './Priority';
 
 export class Tasks
 {
@@ -41,9 +42,9 @@ export class Tasks
     * Add a new task to the tasklist.
     * @param {string} description - The description of the new task.
     * @param {string} priority - The priority of the new task.
-    * @param {string} date - The datestring in ISO 8601 of the new task.
+    * @param {Date} date - The datestring in ISO 8601 of the new task.
     */
-    addTask(description : string, priority : string, date : string)
+    addTask(description : string, priority : Priority, date : Date)
     {
         let newId = this.size;
         let newTask = new Task(newId, description, priority, date);
@@ -68,7 +69,7 @@ export class Tasks
         throw new Error("Task not found with id: " + id);
     }
     
-    getTasksByPriority(priority : string) : Task[]
+    getTasksByPriority(priority : Priority) : Array<Task>
     {
         let tasklist : Task[];
         

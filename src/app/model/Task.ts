@@ -1,12 +1,14 @@
+import { Priority } from './Priority';
+
 /** Class representing a Task */
 export class Task
 {
     private _id : number;
     private _description : string;
-    private _priority : string;
+    private _priority : Priority;
     private _date : Date;
     
-    constructor(id : number = -1, description : string = "A new task." , priority : string = "green", date : Date = new Date())
+    constructor(id : number = -1, description : string = "A new task." , priority : Priority = Priority.Green, date : Date = new Date())
     {
         this.id = id;
         this.description = description;
@@ -55,18 +57,18 @@ export class Task
     
     /**
     * Get the priority or the Task.
-    * @return {string} The Tasks priority.
+    * @return {Priority} The Tasks priority.
     */
-    get priority() : string
+    get priority() : Priority
     {
         return this._priority;
     }
     
     /**
     * Set the priority of the Task.
-    * @param {string} priority - The new prority.
+    * @param {Priority} priority - The new prority.
     */
-    set priority(priority : string)
+    set priority(priority : Priority)
     {
         this._priority = priority;
     }
