@@ -51,7 +51,7 @@ export class TaskComponent implements OnInit
       this.taskDescription = "";
       this.taskPriority = "Green";
       
-      this.router.navigate(['/tasks']);
+      this.router.navigate(['tasks']);
   }
 
 }
