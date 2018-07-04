@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Tasks } from '../model/Tasks';
 import { Task } from '../model/Task';
-import { Priority } from '../model/Priority';
 import { TaskService } from '../task.service';
+import { RestService } from '../services/RestService';
 
 @Component({
   selector: 'app-tasks',
@@ -18,17 +18,25 @@ export class TasksComponent implements OnInit
   }
     
   // This is a hack that enables us to use imported enums.
-  Priority = Priority;
     
-  constructor(private taskService : TaskService) { }
+  constructor(private taskService : TaskService, private restService: RestService) { }
 
   ngOnInit() 
   {
+    this.taskService.tasks = new Tasks();
+    this.restService.getAllTasks().subscribe((response) => {
+      response.forEach((item) => {
+        let date = new Date(item.date);
+          this.taskService.tasks.addTask(item.id, item.description, item.priority, date);  
+      })
+    })
   }
     
   removeTask(task : Task) : void
   {
-      this.tasks.removeTaskById(task.id);
+      this.restService.deleteTask(task._id).subscribe(() => {
+        this.tasks.removeTaskById(task._id);
+      })
   }
 
 }

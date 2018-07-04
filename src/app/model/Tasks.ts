@@ -1,41 +1,40 @@
 import { Task } from './Task';
-import { Priority } from './Priority';
 
 export class Tasks
 {
-    private _tasks : Array<Task>;
-    private idCounter : number = 0;
+    private tasks : Array<Task>;
+    // private idCounter : number = 0;
     
     constructor()
     {
-        this.tasks = new Array<Task>();
+        this._tasks = new Array<Task>();
     }
     
     /**
     * Get takslist.
     * @return {Task[}} The list of tasks.
     */
-    get tasks() : Array<Task>
+    get _tasks() : Array<Task>
     {
-        return this._tasks;
+        return this.tasks;
     }
     
     /**
     * Set tasklist.
     * @param {Task[]} tasks - The new list of tasks.
     */
-    set tasks(tasks : Array<Task>)
+    set _tasks(_tasks : Array<Task>)
     { 
-        this._tasks = tasks;
+        this.tasks = _tasks;
     }
     
     /**
     * Get the amount of tasks.
     * @return {number} The total amount of tasks.
     */
-    get size() : number
+    get _size() : number
     {
-        return this.tasks.length;
+        return this._tasks.length;
     }
     
     /**
@@ -44,11 +43,9 @@ export class Tasks
     * @param {string} priority - The priority of the new task.
     * @param {Date} date - The datestring in ISO 8601 of the new task.
     */
-    addTask(description : string, priority : Priority, date : Date)
+    addTask(_id: number, _description : string, _priority : string, _date : Date)
     {
-        let newTask = new Task(0, description, priority, date);
-        
-        newTask.id = this.idCounter++;
+        let newTask = new Task(_id, _description, _priority, _date);
         
         this.tasks.push(newTask);
     }
@@ -62,19 +59,19 @@ export class Tasks
     {
         for (let task of this.tasks)
         {
-            if (task.id == id) return task;
+            if (task._id == id) return task;
         }
         
-        throw new Error("Task not found with id: " + id);
+        return null;
     }
     
-    getTasksByPriority(priority : Priority) : Array<Task>
+    getTasksByPriority(priority : string) : Array<Task>
     {
         let tasklist = new Array<Task>();
         
         for (let task of this.tasks)
         {
-            if (task.priority == priority) tasklist.push(task);
+            if (task._priority == priority) tasklist.push(task);
         }
         
         return tasklist;
